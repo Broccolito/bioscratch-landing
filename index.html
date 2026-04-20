@@ -585,6 +585,9 @@
           View all releases on GitHub →
         </a>
       </p>
+      <p class="dl-note" id="dl-count-wrap" style="margin-top:6px;margin-bottom:0;opacity:0;transition:opacity .4s ease;">
+        ↓ <span id="dl-total">0</span>&thinsp;total downloads
+      </p>
       <span class="version-pill">v0.2.0</span>
     </div>
   </div>
@@ -627,6 +630,20 @@
 
   // Generic fade elements
   document.querySelectorAll('.fade').forEach(el => io.observe(el));
+
+  // Real-time download counter
+  (async function() {
+    try {
+      const res = await fetch('https://api.github.com/repos/Broccolito/bioscratch/releases?per_page=100');
+      const releases = await res.json();
+      let n = 0;
+      releases.forEach(rel => rel.assets.forEach(a => n += a.download_count));
+      const el = document.getElementById('dl-total');
+      const wrap = document.getElementById('dl-count-wrap');
+      if (el) el.textContent = n.toLocaleString();
+      if (wrap) wrap.style.opacity = '1';
+    } catch(_) {}
+  })();
 </script>
 
 </body>
