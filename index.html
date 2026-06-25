@@ -370,6 +370,93 @@
       color: var(--text-soft);
     }
 
+    /* ─── VS CODE EXTENSION ───────────────────────────────── */
+    .section-vscode {
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+    }
+    .vscode-inner {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 52px;
+      align-items: center;
+    }
+    .vscode-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 4px 13px;
+      font-size: 12px;
+      color: var(--text-mid);
+      margin-bottom: 16px;
+    }
+    .vscode-inner .section-title { margin-bottom: 16px; }
+    .vscode-lead {
+      font-size: 15px;
+      color: var(--text-mid);
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+    .vscode-points {
+      list-style: none;
+      display: grid;
+      gap: 12px;
+      margin-bottom: 30px;
+    }
+    .vscode-points li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 13px;
+      color: var(--text-mid);
+      line-height: 1.5;
+    }
+    .vscode-check {
+      flex: none;
+      width: 16px;
+      height: 16px;
+      margin-top: 2px;
+      stroke: var(--text);
+    }
+    .vscode-points li strong { color: var(--text); font-weight: 700; }
+
+    /* Install card */
+    .install-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+    }
+    .install-head {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-soft);
+      margin-bottom: 14px;
+    }
+    .install-code {
+      background: var(--btn-dark);
+      color: #f4f4f1;
+      border-radius: 6px;
+      padding: 14px 16px;
+      font-family: "SF Mono", "Menlo", "Consolas", monospace;
+      font-size: 12px;
+      line-height: 1.7;
+      overflow-x: auto;
+      margin-bottom: 16px;
+      white-space: pre;
+    }
+    .install-code .tok-cmd { color: #8fd5a6; }
+    .install-note {
+      font-size: 12.5px;
+      color: var(--text-mid);
+      line-height: 1.55;
+    }
+    .install-note strong { color: var(--text); }
+
     /* ─── FADE-IN ─────────────────────────────────────────── */
     .fade {
       opacity: 0;
@@ -392,6 +479,7 @@
       .btn-row { flex-direction: column; align-items: stretch; }
       .btn { justify-content: center; }
       .section { padding: 60px 24px; }
+      .vscode-inner { grid-template-columns: 1fr; gap: 34px; }
       footer { padding: 36px 24px; }
     }
   </style>
@@ -406,6 +494,7 @@
   </a>
   <ul class="nav-links">
     <li><a href="#features">Features</a></li>
+    <li><a href="#vscode">VS Code</a></li>
     <li><a href="#download">Download</a></li>
     <li>
       <a href="https://github.com/Broccolito/bioscratch" target="_blank" rel="noopener">GitHub</a>
@@ -458,8 +547,8 @@
   </div>
 
   <p class="dl-note fade">
-    macOS only &nbsp;·&nbsp; Free &nbsp;·&nbsp; No account required<br>
-    PDF export requires Pandoc &nbsp;<code>brew install pandoc</code>
+    macOS app &nbsp;·&nbsp; Free &nbsp;·&nbsp; No account required<br>
+    Also available as a <a href="#vscode">VS&nbsp;Code extension</a>
   </p>
   <span class="version-pill fade">v0.3.1</span>
 </section>
@@ -561,6 +650,73 @@
   </div>
 </section>
 
+<!-- ════════════════════  VS CODE EXTENSION  ════════════════════ -->
+<section class="section section-vscode" id="vscode">
+  <div class="section-inner vscode-inner">
+
+    <div class="vscode-copy fade">
+      <div class="vscode-badge">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polyline points="16 18 22 12 16 6"/>
+          <polyline points="8 6 2 12 8 18"/>
+        </svg>
+        For Visual Studio Code
+      </div>
+      <h2 class="section-title">The same editor, right inside VS&nbsp;Code.</h2>
+      <p class="vscode-lead">
+        Bioscratch now ships as a VS&nbsp;Code extension. Open any
+        <code style="font-size:13px">.md</code> file and edit it as a live
+        document — while VS&nbsp;Code keeps full ownership of saving, undo, hot
+        exit, and Git. The file on disk stays clean Markdown.
+      </p>
+      <ul class="vscode-points">
+        <li>
+          <svg class="vscode-check" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          <span><strong>True WYSIWYG</strong> for headings, lists, tables, and links — rendered live, edited in place.</span>
+        </li>
+        <li>
+          <svg class="vscode-check" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          <span><strong>KaTeX math, Mermaid diagrams, and syntax highlighting</strong> render as you type.</span>
+        </li>
+        <li>
+          <svg class="vscode-check" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          <span><strong>Native to your workflow</strong> — VS&nbsp;Code owns save, undo/redo, hot exit, and the dirty indicator.</span>
+        </li>
+        <li>
+          <svg class="vscode-check" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          <span><strong>30+ themes</strong>, or <strong>Match VS&nbsp;Code theme</strong> to follow your active color theme automatically.</span>
+        </li>
+      </ul>
+      <div class="btn-row" style="justify-content:flex-start;margin-bottom:0;">
+        <a href="https://github.com/Broccolito/bioscratch/releases/download/v0.3.1/bioscratch-0.3.1.vsix"
+           class="btn btn-filled">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 16.5l-6-6h4V3h4v7.5h4l-6 6zm-7 3h14v2H5v-2z"/></svg>
+          Download .vsix
+        </a>
+        <a href="https://github.com/Broccolito/bioscratch/releases/latest"
+           class="btn btn-ghost" target="_blank" rel="noopener">
+          View on GitHub
+        </a>
+      </div>
+    </div>
+
+    <div class="vscode-install fade">
+      <div class="install-card">
+        <div class="install-head">Install</div>
+        <div class="install-code"><span class="tok-cmd">code</span> --install-extension \
+  bioscratch-0.3.1.vsix</div>
+        <p class="install-note">
+          …or open the Command Palette and run
+          <strong>Extensions: Install from VSIX…</strong>, then pick the
+          downloaded file. Bioscratch becomes the default editor for Markdown
+          files — switch back anytime with <strong>Reopen Editor With…</strong>.
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
 <!-- ════════════════════  DOWNLOAD  ════════════════════ -->
 <section class="section section-download" id="download">
   <div class="section-inner">
@@ -589,8 +745,9 @@
       </div>
 
       <p class="dl-note" style="margin-top:14px;">
-        macOS only &nbsp;·&nbsp; Free &nbsp;·&nbsp; No account required<br>
-        PDF export requires Pandoc &nbsp;<code>brew install pandoc</code><br><br>
+        macOS app &nbsp;·&nbsp; Free &nbsp;·&nbsp; No account required<br>
+        PDF export requires Pandoc &nbsp;<code>brew install pandoc</code><br>
+        Prefer your editor? Get the <a href="#vscode">VS&nbsp;Code extension</a>.<br><br>
         <a href="https://github.com/Broccolito/bioscratch/releases/tag/v0.3.1" target="_blank" rel="noopener">
           What&rsquo;s new in v0.3.1 &rarr;
         </a>
